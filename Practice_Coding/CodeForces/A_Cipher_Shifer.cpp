@@ -78,17 +78,27 @@ void siv(int N)
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
+    string s, d;
+    cin >> s;
 
-    vi a(n);
-    ain(a, n);
-
-    sort(all(a), greater<int>());
-
-    aout(a, n);
-    cout << endl;
-    // unsolved
+    for (size_t i = 0; i < n; i++)
+    {
+        for (int j = i+1; j < n; j++)
+        {
+            if(s[j] == s[i])
+            {
+                d += s[j];
+                if(i < n-1)
+                {
+                    i = j;
+                }
+                break;
+            }
+        }
+    }
+    cout << d << nl;
 }
 
 int main()
