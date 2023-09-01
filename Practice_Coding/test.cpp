@@ -4,9 +4,7 @@ using namespace std;
 
 int main()
 {
-    int n;
-    cin >> n;
-
-    cout << n;
+    char a = '1';
+    cout << char(a+1) << endl;
 }
 
