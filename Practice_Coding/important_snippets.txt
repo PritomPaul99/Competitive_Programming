@@ -1,0 +1,24 @@
+1) Sorting map in c++ (According to key)
+    bool cmp(pair<int, int> &a, pair<int, int> &b)
+    {
+        return a.second < b.second;
+    }
+
+    void sort(map<int, int> &M)
+    {
+        vector<pair<int, int>> A;
+
+        for (auto &it : M)
+        {
+            A.push_back(it);
+        }
+
+        sort(A.begin(), A.end(), cmp);
+
+        // for (auto &it : mp)
+        // {
+
+        //     cout << it.first << ' '
+        //          << it.second << endl;
+        // }
+    }
