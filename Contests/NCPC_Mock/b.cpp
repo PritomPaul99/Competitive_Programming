@@ -74,24 +74,43 @@ using namespace std;
 
 void solve()
 {
-    
+    int p, s, r;
+    cin >> p >> s >> r;
+
+    if (p == s && r == 1)
+    {
+        cout << "Yes" << nl;
+    }
+    else if (s < p)
+    {
+        cout << "Yes" << endl;
+    }
+    else
+    {
+        cout << "No" << endl;
+    }
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    // double start = clock();
     // f_input;
     // f_output;
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca++ << ": ";
+        cout << "Case " << ca++ << ": ";
         solve();
     }
 
+    // #ifndef ONLINE_JUDGE
+    // double time = (clock() - start) / CLOCKS_PER_SEC;
+    // cerr << "Running Time : "<< time << "\n";
+    // #endif
     return 0;
 }

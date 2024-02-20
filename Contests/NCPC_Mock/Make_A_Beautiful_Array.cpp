@@ -74,6 +74,18 @@ using namespace std;
 
 void solve()
 {
+    int n;
+    cin >> n;
+
+    vi a(n);
+    int sum = 0;
+    int f1 = -1, f2 = -1,
+        cnt = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        
+    }
     
 }
 
@@ -81,6 +93,7 @@ int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    // double start = clock();
     // f_input;
     // f_output;
 #endif
@@ -93,5 +106,9 @@ int main()
         solve();
     }
 
+    // #ifndef ONLINE_JUDGE
+    // double time = (clock() - start) / CLOCKS_PER_SEC;
+    // cerr << "Running Time : "<< time << "\n";
+    // #endif
     return 0;
 }

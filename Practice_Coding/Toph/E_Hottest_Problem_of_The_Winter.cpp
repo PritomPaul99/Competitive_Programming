@@ -74,13 +74,38 @@ using namespace std;
 
 void solve()
 {
-    
+    int n;
+    cin >> n;
+    vector<string> s(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> s[i];
+    }
+    string ans = "";
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < s[i].size(); j++)
+        {
+            if(j == 0)
+            {
+                ans += toupper(s[i][j]);
+            }
+            else
+            {
+                ans += tolower(s[i][j]);
+            }
+        }
+        
+    }
+    cout << ans << nl;
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    // double start = clock();
     // f_input;
     // f_output;
 #endif
@@ -93,5 +118,9 @@ int main()
         solve();
     }
 
+    // #ifndef ONLINE_JUDGE
+    // double time = (clock() - start) / CLOCKS_PER_SEC;
+    // cerr << "Running Time : "<< time << "\n";
+    // #endif
     return 0;
 }
