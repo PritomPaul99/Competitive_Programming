@@ -53,7 +53,6 @@ const ll Mod = 1e9 + 7;
                                          // in an integer
 #define _celi(x, y) (x + y - 1) / (y)
 #define isPow2(x) (ceil(log2(x)) == floor(log2(x)))
-// #define DigitSum(n) (1 + ((n - 1) % 9))
 
 // Containers
 #define vi vector<int>
@@ -73,45 +72,54 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-vector<ll> num(1e5 + 9);
+vector<ll> ans;
 
-int DigitSum(int num)
+int digit_sum(int n)
 {
     int sum = 0;
-    while (num != 0)
+    while (n != 0)
     {
-        sum += num % 10;
-        num = num / 10;
+        sum += (n % 10);
+        n /= 10;
     }
     return sum;
 }
 
-void sum()
+int sum()
 {
     ll sum = 0;
-
-    for (int i = 1; i <= 12; i++)
+    for (int i = 1; i < 2 * 1e5 + 2; i++)
     {
-        sum += DigitSum(i);
-        // cout << i << "---" << DigitSum(i) << endl;
+        if (i <= 9)
+        {
+            sum = i * (i + 1) / 2;
+            ans.pb(sum);
+        }
+        else
+        {
+            sum += digit_sum(i);
+            ans.pb(sum);
+        }
     }
-    cout << sum << nl;
+    return 0;
 }
 
 void solve()
 {
     int n;
     cin >> n;
+
+    cout << ans[n - 1] << endl;
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
-    // double start = clock();
     f_input;
     f_output;
 #endif
+    sum();
     int ttt = 1, ca = 1;
     cin >> ttt;
     while (ttt--)
@@ -120,10 +128,6 @@ int main()
         solve();
     }
 
-    // #ifndef ONLINE_JUDGE
-    // double time = (clock() - start) / CLOCKS_PER_SEC;
-    // cerr << "Running Time : "<< time << "\n";
-    // #endif
     return 0;
 }
 
