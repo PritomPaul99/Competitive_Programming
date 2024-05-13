@@ -2,10 +2,10 @@
 
 using namespace std;
 
+#define nl '\n'
+
 int main()
 {
-
-    int x = 21, i = 18;
-    cout << __gcd(x, i) + i << endl;
-    return false;
+    cout << ((4 + 3) % 4) << nl;
+    return 0;
 }
