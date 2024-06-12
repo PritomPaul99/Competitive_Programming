@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
-    cout << ((4 + 3) % 4) << nl;
+    string s = "";
+    cout << s.size();
+
     return 0;
 }
