@@ -72,21 +72,55 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+vector<vi> graph(100005, vi());
+int dist[100005];
+
+int dfs(int node)
+{
+    if (dist[node] != -1)
+    {
+        return dist[node];
+    }
+    int pathL = 0;
+    for (auto child : graph[node])
+    {
+        pathL = max(pathL, dfs(child));
+    }
+    return dist[node] = ++pathL;
+}
+
 void solve()
 {
-    
+    int n, m;
+    cin >> n >> m;
+
+    mems(dist, -1);
+
+    for (int i = 0; i < m; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        graph[a].pb(b);
+    }
+
+    int result = 0;
+    for (int i = 1; i < n + 1; i++)
+    {
+        result = max(result, dfs(i));
+    }
+    cout << --result << endl;
 }
 
 int main()
 {
     FastIO;
-#ifndef ONLINE_JUDGE
-    f_input;
-    f_output;
-#endif
+// #ifndef ONLINE_JUDGE
+//     f_input;
+//     f_output;
+// #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca++ << ": ";

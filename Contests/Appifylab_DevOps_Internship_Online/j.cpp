@@ -74,19 +74,45 @@ using namespace std;
 
 void solve()
 {
-    
+    int n;
+    cin >> n;
+    vi a(n);
+    ain(a, n);
+
+    int ans = 2000000;
+
+    for (int i = (1 << (n - 1)) - 1; i >= 0; --i)
+    {
+        int t = 0;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (i & (1 << j))
+            {
+                t += a[j];
+            }
+            else
+            {
+                t -= a[j];
+            }
+        }
+
+        ans = min(ans, abs(t));
+    }
+
+    cout << ans << nl;
 }
 
 int main()
 {
     FastIO;
-#ifndef ONLINE_JUDGE
-    f_input;
-    f_output;
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     f_input;
+    //     f_output;
+    // #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca++ << ": ";

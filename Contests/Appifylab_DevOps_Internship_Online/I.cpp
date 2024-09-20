@@ -74,7 +74,31 @@ using namespace std;
 
 void solve()
 {
-    
+    ll n, k;
+    cin >> n >> k;
+
+    vector<pair<ll, ll>> a(n);
+
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i].first;
+
+        a[i].first %= k;
+
+        if(a[i].first == 0){
+            a[i].first = k;
+        }
+
+        a[i].second = -1 * (i + 1);
+    }
+
+    sort(all(a), greater<pair<ll, ll>>());
+
+    for (ll i = 0; i < n; i++)
+    {
+        cout << -1 * a[i].second << " ";
+    }
+    cout << nl;
 }
 
 int main()
@@ -95,7 +119,7 @@ int main()
 
     return 0;
 }
-
+ 
 /*
 Cautions, Tips & Tricks:
     1. Any square number when divided by 4 must have a remainder of either 0 or 1.
@@ -103,3 +127,4 @@ Cautions, Tips & Tricks:
        [better way to compare floating point numbers]
     3. Remember: ((a + b) mod a) = b, for 0 ≤ b < a.
 */
+ 

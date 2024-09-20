@@ -74,7 +74,33 @@ using namespace std;
 
 void solve()
 {
-    
+    int m, n;
+    cin >> m >> n;
+    ll res = 0;
+
+    for (int i = 0; i < m; i++)
+    {
+        ll sum = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            // vector<int> arr;
+            int x;
+            cin >> x;
+            // arr.pb(x);
+            sum += x;
+        }
+        res ^= sum;
+    }
+
+    if (res > 0)
+    {
+        cout << "Alice" << nl;
+    }
+    else
+    {
+        cout << "Bob" << nl;
+    }
 }
 
 int main()
@@ -89,7 +115,7 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca++ << ": ";
+        cout << "Case " << ca++ << ": ";
         solve();
     }
 

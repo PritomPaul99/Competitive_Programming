@@ -72,21 +72,51 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+string str;
 void solve()
 {
-    
-}
+    string str1, str2;
+    cin >> str1 >> str2;
 
+    int ans = 0;
+    int len = str1.size();
+    
+    for (int i = 0; i < len; i++)
+    {
+        if (str[str1[i]] || str[str2[i]])
+        {
+            if (str[str1[i]] != str2[i])
+            {
+                cout << -1 << nl;
+                return;
+            }
+        }
+        else
+        {
+            str[str1[i]] = str2[i];
+            str[str2[i]] = str1[i];
+            ans += (str1[i] != str2[i]);
+        }
+    }
+    cout << ans << nl;
+    for (char i = 'a'; i <= 'z'; i++)
+    {
+        if (str[i] && str[i] < i)
+        {
+            cout << i << ' ' << str[i] << nl;
+        }
+    }
+}
 int main()
 {
     FastIO;
-#ifndef ONLINE_JUDGE
-    f_input;
-    f_output;
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     f_input;
+    //     f_output;
+    // #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca++ << ": ";
