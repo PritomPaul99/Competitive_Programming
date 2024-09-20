@@ -96,22 +96,13 @@ void solve()
     int x, y;
     cin >> x >> y;
 
-    int p22 = ceil((float)y / 2.0);
-    int g22 = 4 * y;
-    int p11 = (p22 * 15) - g22;
-    // cout << p11 << nl;
-
-    if (x <= p11)
+    if (y < -1)
     {
-        cout << p22 << nl;
+        cout << "NO" << nl;
     }
     else
     {
-        int rest = x - p11;
-
-        int extraPage = ceil(rest / 15.0);
-
-        cout << p22 + extraPage << nl;
+        cout << "YES" << nl;
     }
 }
 

@@ -63,7 +63,6 @@ const ll Mod = 1e9 + 7;
 #define pb push_back
 
 // debug
-#define cpoint cerr << "_________________CHECK POINT_________________\n";
 #define _debug(x) cerr << x << endl
 #define Yes printf("Yes\n")
 #define No printf("No\n")
@@ -72,47 +71,27 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-/*bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-}*/
-
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
+    int x, n;
+    cin >> x >> n;
+    vi a(n);
+    ain(a, n);
 
-    int p22 = ceil((float)y / 2.0);
-    int g22 = 4 * y;
-    int p11 = (p22 * 15) - g22;
-    // cout << p11 << nl;
+    sort(all(a));
 
-    if (x <= p11)
+    int cnt = 0, s = 0;
+
+    for (int i = 0; i < n - 1; i++)
     {
-        cout << p22 << nl;
+        if (a[i] != 1)
+        {
+            cnt += (a[i] - 1);
+            // cerr << "check: " << ceil(a[i] / 2.0) << nl;
+        }
+        s += a[i];
     }
-    else
-    {
-        int rest = x - p11;
-
-        int extraPage = ceil(rest / 15.0);
-
-        cout << p22 + extraPage << nl;
-    }
+    cout << cnt + s << nl;
 }
 
 int main()

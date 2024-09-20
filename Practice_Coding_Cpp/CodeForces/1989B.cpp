@@ -93,26 +93,36 @@ void siv(int N)
 
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
+    string a, b, str;
+    cin >> a >> b;
+    int na = a.size(), nb = b.size();
+    int total = na + nb;
+    int ans = 0;
 
-    int p22 = ceil((float)y / 2.0);
-    int g22 = 4 * y;
-    int p11 = (p22 * 15) - g22;
-    // cout << p11 << nl;
-
-    if (x <= p11)
+    int i = 0;
+    // int j = 0;
+    while (i < nb)
     {
-        cout << p22 << nl;
-    }
-    else
-    {
-        int rest = x - p11;
+        int cnt = 0;
 
-        int extraPage = ceil(rest / 15.0);
-
-        cout << p22 + extraPage << nl;
+        int j = 0;
+        int temp = i;
+        while (j < na)
+        {
+            if (temp < nb && b[temp] == a[j])
+            {
+                temp++, j++, cnt++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        // cerr << cnt << nl;
+        ans = max(ans, cnt);
+        i++;
     }
+    cout << nb - ans + na << nl;
 }
 
 int main()

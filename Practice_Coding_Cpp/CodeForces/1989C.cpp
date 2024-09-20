@@ -63,7 +63,6 @@ const ll Mod = 1e9 + 7;
 #define pb push_back
 
 // debug
-#define cpoint cerr << "_________________CHECK POINT_________________\n";
 #define _debug(x) cerr << x << endl
 #define Yes printf("Yes\n")
 #define No printf("No\n")
@@ -93,26 +92,75 @@ void siv(int N)
 
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n);
+    ain(a, n);
+    ain(b, n);
 
-    int p22 = ceil((float)y / 2.0);
-    int g22 = 4 * y;
-    int p11 = (p22 * 15) - g22;
-    // cout << p11 << nl;
+    int bn = 0, bp = 0;
+    int ra = 0, rb = 0;
 
-    if (x <= p11)
+    for (int i = 0; i < n; i++)
     {
-        cout << p22 << nl;
+        if (a[i] == 1 && b[i] == 1)
+        {
+            bp++;
+        }
+        else if (a[i] == -1 && b[i] == -1)
+        {
+            bn++;
+        }
+        else
+        {
+            if (a[i] > b[i])
+                ra += a[i];
+            else if (a[i] < b[i])
+                rb+= b[i];
+        }
     }
-    else
+
+    // cerr << "bp: " << bp << "| bn: " << bn << nl;
+    // cerr << "Ra: " << ra << "| Rb: " << rb << nl << nl;
+
+    for (int i = 0; i < bn; i++)
     {
-        int rest = x - p11;
-
-        int extraPage = ceil(rest / 15.0);
-
-        cout << p22 + extraPage << nl;
+        // cerr << "Check" << nl;
+        if (ra != rb)
+        {
+            if (ra > rb)
+            {
+                ra--;
+            }
+            else if (ra < rb)
+            {
+                rb--;
+            }
+        }
+        else
+        {
+            ra--;
+        }
     }
+
+    for (int i = 0; i < bp; i++)
+    {
+        if (ra > rb)
+        {
+            rb++;
+        }
+        else if (rb > ra)
+        {
+            ra++;
+        }
+        else
+        {
+            ra++;
+        }
+    }
+
+    // cerr << ra << " " << rb << nl;
+    cout << min(ra, rb) << nl;
 }
 
 int main()

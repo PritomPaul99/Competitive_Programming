@@ -61,8 +61,7 @@ const ll Mod = 1e9 + 7;
 #define pb push_back
 
 // debug
-#define cpoint cout << "_________________CHECK POINT_________________\n";
-#define _debug(x) cout << x << endl
+#define _debug(x) cerr << x << endl
 #define Yes printf("Yes\n")
 #define No printf("No\n")
 #define YES printf("YES\n")
@@ -70,16 +69,41 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+/*bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
+    {
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
+        {
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
+        }
+    }
+    primeNum[1] = 1;
+}*/
+
 void solve()
 {
-    
+    int n;
+    cin >> n;
+    vi a(n);
+    ain(a, n);
+    int ans = a[n - 1];
+    a.pop_back();
+    ans += *max_element(all(a));
+    cout << ans << nl;
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
-    // double start = clock();
     f_input;
     f_output;
 #endif
@@ -92,12 +116,16 @@ int main()
         solve();
     }
 
-    // #ifndef ONLINE_JUDGE
-    // double time = (clock() - start) / CLOCKS_PER_SEC;
-    // cerr << "Running Time : "<< time << "\n";
-    // #endif
     return 0;
 }
+
+/*
+Cautions, Tips & Tricks:
+    1. Any square number when divided by 4 must have a remainder of either 0 or 1.
+    2. Floating point numbers numbers are equal if the difference between them is less than 1e-9
+       [better way to compare floating point numbers]
+    3. Remember: ((a + b) mod a) = b, for 0 ≤ b < a.
+*/
 
 /***************************************************************************************************\
 *                                            Written by:                                            *

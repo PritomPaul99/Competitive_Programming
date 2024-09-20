@@ -63,7 +63,6 @@ const ll Mod = 1e9 + 7;
 #define pb push_back
 
 // debug
-#define cpoint cerr << "_________________CHECK POINT_________________\n";
 #define _debug(x) cerr << x << endl
 #define Yes printf("Yes\n")
 #define No printf("No\n")
@@ -93,26 +92,27 @@ void siv(int N)
 
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
+    int a, b, c;
+    cin >> a >> b >> c;
 
-    int p22 = ceil((float)y / 2.0);
-    int g22 = 4 * y;
-    int p11 = (p22 * 15) - g22;
-    // cout << p11 << nl;
+    int res = 0;
 
-    if (x <= p11)
+    for (int i = 0; i <= 5; i++)
     {
-        cout << p22 << nl;
+        for (int j = 0; j <= 5; j++)
+        {
+            for (int k = 0; k <= 5; k++)
+            {
+                if (i + j + k == 5)
+                {
+                    int m = (a + i) * (b + j) * (c + k);
+                    res = max(res, m);
+                }
+            }
+        }
     }
-    else
-    {
-        int rest = x - p11;
 
-        int extraPage = ceil(rest / 15.0);
-
-        cout << p22 + extraPage << nl;
-    }
+    cout << res << nl;
 }
 
 int main()
